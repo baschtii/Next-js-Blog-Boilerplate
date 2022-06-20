@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, NextScript } from 'next/document';
 
 import { AppConfig } from '../utils/AppConfig';
 
@@ -7,9 +7,13 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang={AppConfig.locale}>
-        <Head />
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
         <body>
-          <Main />
           <NextScript />
         </body>
       </Html>

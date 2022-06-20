@@ -1,9 +1,7 @@
 import React, { ReactNode } from 'react';
 
-import Link from 'next/link';
-
-import { Navbar } from '../navigation/Navbar';
-import { AppConfig } from '../utils/AppConfig';
+import { Home } from '../home/Home';
+import { Footer } from '../navigation/Footer';
 
 type IMainProps = {
   meta: ReactNode;
@@ -11,54 +9,39 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => (
-  <div className="antialiased w-full text-gray-700 px-3 md:px-0">
+  <div className="antialiased bg-zinc-900 w-full h-screen text-zinc-100 flex flex-col min-h-screen font-body">
     {props.meta}
 
-    <div className="max-w-screen-md mx-auto">
-      <div className="border-b border-gray-300">
-        <div className="pt-16 pb-8">
-          <div className="font-semibold text-3xl text-gray-900">
-            {AppConfig.title}
-          </div>
-          <div className="text-xl">{AppConfig.description}</div>
-        </div>
-        <div>
-          <Navbar>
-            <li className="mr-6">
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </li>
-            <li className="mr-6">
-              <Link href="/about/">
-                <a>About</a>
-              </Link>
-            </li>
-            <li className="mr-6">
-              <a href="https://github.com/ixartz/Next-js-Blog-Boilerplate">
-                GitHub
-              </a>
-            </li>
-          </Navbar>
-        </div>
-      </div>
+    {/* <div className="top-0 sticky text-white py-4 border-b border-zinc-800 my-2">
+      <div className="flex gap-x-8 justify-center max-w-sm md:max-w-5xl">
+        <Link href="/">
+          <button className="font-black tracking-wider font-mono text-2xl md:text-4xl">
+            home
+          </button>
+        </Link>
 
-      <div className="text-xl py-5">{props.children}</div>
-
-      <div className="border-t border-gray-300 text-center py-8 text-sm">
-        © Copyright {new Date().getFullYear()} {AppConfig.title}. Powered with{' '}
-        <span role="img" aria-label="Love">
-          ♥
-        </span>{' '}
-        by <a href="https://creativedesignsguru.com">CreativeDesignsGuru</a>
-        {/*
-         * PLEASE READ THIS SECTION
-         * We'll really appreciate if you could have a link to our website
-         * The link doesn't need to appear on every pages, one link on one page is enough.
-         * Thank you for your support it'll mean a lot for us.
-         */}
+        <button className="font-black tracking-wider font-mono text-2xl md:text-4xl">
+          blog
+        </button>
+        <Link href="/about/">
+          <button className="font-black tracking-wider font-mono text-2xl md:text-4xl">
+            about
+          </button>
+        </Link>
       </div>
+    </div> */}
+    <div className="w-full max-w-4xl pt-8 pb-32 mx-auto xl:px-6 xl:text-lg 2xl:text-xl 2xl:max-w-6xl">
+      <Home></Home>
     </div>
+
+    <div className="flex grow">{props.children}</div>
+
+    <Footer
+      footerLinks={[
+        { href: '/', name: 'Datenschutz' },
+        { href: '/', name: 'Impressum' },
+      ]}
+    ></Footer>
   </div>
 );
 
