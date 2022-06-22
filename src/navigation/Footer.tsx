@@ -9,14 +9,14 @@ export interface FooterLinks {
 }
 
 export interface FooterProps {
-  footerLinks: Array<FooterLinks>;
+  footerLinks?: Array<FooterLinks>;
   socialItems?: Array<SocialItem>;
 }
 
 export const Footer = ({ footerLinks, socialItems }: FooterProps) => {
   const year = new Date().getFullYear();
   return (
-    <footer className="px-4 py-5 block drop-shadow-md overflow-hidden mt-16">
+    <footer className="px-4 py-5 block fixed bottom-0 bg-zinc-900">
       <nav className="flex justify-between content-center">
         <span className="text-base font-regular">{`Bastian Walk © ${year}`}</span>
         {socialItems && (
@@ -32,17 +32,19 @@ export const Footer = ({ footerLinks, socialItems }: FooterProps) => {
             </ul>
           </nav>
         )}
-        <nav>
-          <ul className="flex space-x-3 ml-10">
-            {footerLinks.map(({ name, href }) => {
-              return (
-                <li key={name}>
-                  <a href={href}>{name}</a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        {footerLinks && (
+          <nav>
+            <ul className="flex space-x-3 ml-10">
+              {footerLinks.map(({ name, href }) => {
+                return (
+                  <li key={name}>
+                    <a href={href}>{name}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        )}
       </nav>
     </footer>
   );
